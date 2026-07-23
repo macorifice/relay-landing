@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relay — impara in 90 secondi, poi spiegalo a qualcuno</title>
+<meta name="description" content="Micro-learning a staffetta per sviluppatori: una card da 90 secondi al giorno, un quiz, e la rispieghi con parole tue. Perché finché non lo spieghi, non l'hai capito.">
+<meta property="og:title" content="Relay — impara in 90 secondi, poi spiegalo a qualcuno">
+<meta property="og:description" content="Una card da 90 secondi al giorno su AI, SQL, system design o sicurezza. La impari, la rispieghi con parole tue, la passi avanti.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #fbfaf8;
+    --surface: #ffffff;
+    --text: #1c1b1a;
+    --muted: #63615d;
+    --border: #e6e3dd;
+    --accent: #534ab7;
+    --accent-soft: #eeedfe;
+    --accent-text: #26215c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16151a;
+      --surface: #1e1d24;
+      --text: #f2f1ef;
+      --muted: #a8a5a0;
+      --border: #302e38;
+      --accent: #a29aef;
+      --accent-soft: #262238;
+      --accent-text: #cecbf6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { line-height: 1.25; font-weight: 600; letter-spacing: -0.02em; }
+  h1 { font-size: clamp(2rem, 6vw, 3.1rem); margin: 0 0 20px; }
+  h2 { font-size: clamp(1.4rem, 4vw, 1.85rem); margin: 0 0 28px; }
+  h3 { font-size: 1.05rem; margin: 0 0 6px; }
+  p { margin: 0 0 18px; }
+  a { color: inherit; }
+
+  header { padding: 20px 0; border-bottom: 1px solid var(--border); }
+  .logo { font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 9px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); display: inline-block; }
+
+  .hero { padding: 84px 0 72px; }
+  .kicker {
+    display: inline-block; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--accent-text); background: var(--accent-soft);
+    padding: 6px 13px; border-radius: 100px; margin-bottom: 22px;
+  }
+  .lead { font-size: clamp(1.05rem, 2.6vw, 1.22rem); color: var(--muted); max-width: 34em; margin-bottom: 34px; }
+
+  .btn {
+    display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+    padding: 14px 28px; border-radius: 10px; font-weight: 550; font-size: 1.02rem;
+    transition: transform .12s ease, opacity .12s ease;
+  }
+  .btn:hover { opacity: .92; transform: translateY(-1px); }
+  @media (prefers-color-scheme: dark) { .btn { color: #16151a; } }
+  .btn-note { display: block; margin-top: 14px; font-size: .88rem; color: var(--muted); }
+
+  section { padding: 64px 0; border-top: 1px solid var(--border); }
+
+  .steps { display: grid; gap: 20px; }
+  @media (min-width: 700px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+  .step { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+  .num {
+    width: 30px; height: 30px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-text);
+    display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: .88rem; margin-bottom: 14px;
+  }
+  .step p { font-size: .95rem; color: var(--muted); margin: 0; }
+
+  blockquote {
+    margin: 0; padding: 22px 26px; background: var(--accent-soft); border-radius: 14px;
+    color: var(--accent-text); font-size: 1.06rem;
+  }
+  blockquote p:last-child { margin: 0; }
+
+  .tracks { display: grid; gap: 14px; }
+  @media (min-width: 620px) { .tracks { grid-template-columns: 1fr 1fr; } }
+  .track {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start;
+  }
+  .track .ico { font-size: 1.3rem; line-height: 1.3; }
+  .track p { font-size: .9rem; color: var(--muted); margin: 0; }
+
+  .faq { border-top: 1px solid var(--border); padding: 20px 0; }
+  .faq:last-of-type { border-bottom: 1px solid var(--border); }
+  .faq h3 { margin-bottom: 4px; }
+  .faq p { color: var(--muted); margin: 0; font-size: .95rem; }
+
+  .cta { text-align: center; padding: 76px 0; }
+  footer { padding: 36px 0 56px; border-top: 1px solid var(--border); color: var(--muted); font-size: .88rem; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap logo"><span class="dot"></span> Relay</div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <span class="kicker">Esperimento aperto</span>
+    <h1>Impara una cosa in 90 secondi. Poi spiegala a qualcuno.</h1>
+    <p class="lead">
+      Ogni mattina una card da 90 secondi su un tema da sviluppatore. Rispondi a un quiz,
+      poi la rispieghi con parole tue. Perché finché non riesci a spiegarlo, non l'hai davvero capito.
+    </p>
+    <a class="btn" href="https://t.me/relay_staffetta_bot">Inizia su Telegram</a>
+    <span class="btn-note">Gratis, senza registrazione. Una card al giorno, smetti quando vuoi.</span>
+  </div>
+
+  <section class="wrap">
+    <h2>Come funziona</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Leggi</h3>
+        <p>Un concetto operativo spiegato in 90 secondi. Niente teoria inutile: roba che usi il giorno stesso.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Rispondi</h3>
+        <p>Un quiz secco su uno scenario reale, per capire se il concetto è passato davvero o solo in apparenza.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Rispiega</h3>
+        <p>Lo racconti con parole tue in due frasi, scritte o a voce. È qui che il concetto si fissa per davvero.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Perché la terza parte è quella che conta</h2>
+    <p>
+      Leggere dà la sensazione di aver capito. Spiegare dimostra se è vero. Nel momento in cui provi a
+      riformulare un concetto con parole tue, scopri all'istante i punti in cui eri solo passato sopra —
+      ed è esattamente lì che l'apprendimento accade.
+    </p>
+    <blockquote>
+      <p>È il principio dietro il metodo Feynman: se non riesci a spiegarlo in modo semplice, non l'hai capito abbastanza.</p>
+    </blockquote>
+    <p style="margin-top:18px">
+      Relay trasforma quel principio in un'abitudine da 90 secondi al giorno. E le spiegazioni migliori
+      non restano ferme: puoi passarle a chi vuoi, e diventano il punto di partenza di qualcun altro.
+    </p>
+  </section>
+
+  <section class="wrap">
+    <h2>Scegli il tuo track</h2>
+    <div class="tracks">
+      <div class="track">
+        <span class="ico">🧠</span>
+        <div><h3>AI e LLM</h3><p>Context window, RAG, tool calling, prompt injection, caching, agenti, eval, MCP.</p></div>
+      </div>
+      <div class="track">
+        <span class="ico">🗄️</span>
+        <div><h3>SQL e database</h3><p>Indici, N+1, EXPLAIN, transazioni, isolamento, deadlock, paginazione.</p></div>
+      </div>
+      <div class="track">
+        <span class="ico">🏗️</span>
+        <div><h3>System design</h3><p>Cache, load balancing, CAP, code, idempotenza, sharding, circuit breaker.</p></div>
+      </div>
+      <div class="track">
+        <span class="ico">🔒</span>
+        <div><h3>Sicurezza applicativa</h3><p>Injection, XSS, autorizzazione, hashing, CSRF, segreti, dipendenze.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Domande rapide</h2>
+    <div class="faq">
+      <h3>Quanto tempo mi porta via?</h3>
+      <p>Un paio di minuti al giorno: 90 secondi di lettura, il quiz, due frasi di rispiegazione.</p>
+    </div>
+    <div class="faq">
+      <h3>Devo registrarmi?</h3>
+      <p>No. Apri il bot su Telegram, scegli il track e parti. Nessuna email, nessuna password.</p>
+    </div>
+    <div class="faq">
+      <h3>E se salto un giorno?</h3>
+      <p>Non succede nulla. Le card ti aspettano, e con <code>/pausa</code> le sospendi quando vuoi.</p>
+    </div>
+    <div class="faq">
+      <h3>È un prodotto finito?</h3>
+      <p>No, ed è dichiarato: è un esperimento in corso, volutamente essenziale. I feedback sono benvenuti e ascoltati.</p>
+    </div>
+  </section>
+
+  <div class="wrap cta">
+    <h2>Novanta secondi, una volta al giorno</h2>
+    <a class="btn" href="https://t.me/relay_staffetta_bot">Inizia su Telegram</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Relay è un esperimento indipendente sul micro-learning.
+    Scrivimi su <a href="https://t.me/relay_staffetta_bot">Telegram</a> per feedback o domande.
+  </div>
+</footer>
+
+</body>
+</html>
