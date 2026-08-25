@@ -10,70 +10,62 @@
 <title>Informativa sulla privacy — Relay</title>
 <meta name="description" content="Quali dati raccoglie Relay, perché, dove finiscono e come chiederne la cancellazione.">
 <meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
 <style>
+  /* Stessi valori della landing e dell'app: un'informativa che sembra di un
+     altro sito e' un'informativa che sembra meno tua. */
   :root {
-    --bg: #fbfaf8;
-    --surface: #ffffff;
-    --text: #1c1b1a;
-    --muted: #63615d;
-    --border: #e6e3dd;
-    --accent: #534ab7;
-    --accent-soft: #eeedfe;
-    --accent-text: #26215c;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #16151a;
-      --surface: #1e1d24;
-      --text: #f2f1ef;
-      --muted: #a8a5a0;
-      --border: #302e38;
-      --accent: #a29aef;
-      --accent-soft: #262238;
-      --accent-text: #cecbf6;
-    }
+    --bg: #0D0C0B; --surface: #171614; --surface-dim: #131211;
+    --border: #2A2724; --border-dim: #221F1C;
+    --text: #F2F0EC; --text-dim: #D6D2CB; --muted: #B4AFA5;
+    --dim: #8C877E; --faint: #6B675F;
+    --accent: #C7E03E; --accent-bright: #DEF75B;
+    --display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    --body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--body); line-height: 1.65; -webkit-font-smoothing: antialiased;
   }
   .wrap { max-width: 720px; margin: 0 auto; padding: 48px 24px 96px; }
-  a { color: var(--accent); }
-  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.02em; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent-bright); }
+  h1 {
+    font-family: var(--display); font-weight: 700; font-size: 2rem;
+    line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.03em;
+  }
   h2 {
-    font-size: 1.15rem; margin: 40px 0 12px; letter-spacing: -0.01em;
-    padding-top: 24px; border-top: 1px solid var(--border);
+    font-family: var(--display); font-weight: 700; font-size: 1.15rem;
+    margin: 40px 0 12px; letter-spacing: -0.02em;
+    padding-top: 24px; border-top: 1px solid var(--border-dim);
   }
   h2:first-of-type { border-top: 0; padding-top: 0; }
-  .aggiornata { color: var(--muted); font-size: 0.9rem; margin: 0 0 32px; }
+  p { color: var(--muted); text-wrap: pretty; }
+  .aggiornata { color: var(--dim); font-size: .9rem; margin: 0 0 32px; }
   .sommario {
-    background: var(--accent-soft); color: var(--accent-text);
-    border-radius: 10px; padding: 20px 24px; margin: 0 0 40px;
+    background: var(--surface); border-left: 3px solid var(--accent);
+    padding: 22px 26px; margin: 0 0 40px;
   }
-  .sommario p { margin: 0 0 10px; }
+  .sommario p { margin: 0 0 12px; color: var(--text-dim); }
   .sommario p:last-child { margin-bottom: 0; }
-  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95rem; }
-  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  th { font-weight: 600; width: 38%; }
+  .sommario strong { color: var(--text); }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .95rem; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border-dim); vertical-align: top; }
+  th { font-weight: 500; width: 38%; color: var(--text-dim); font-family: var(--display); }
   td { color: var(--muted); }
-  ul { padding-left: 22px; }
-  li { margin: 6px 0; }
+  ul { padding-left: 22px; color: var(--muted); }
+  li { margin: 7px 0; }
+  li strong { color: var(--text-dim); }
   .nota {
-    border-left: 3px solid var(--accent); padding: 4px 0 4px 16px;
-    margin: 20px 0; color: var(--muted);
+    border-left: 3px solid var(--accent); padding: 6px 0 6px 18px;
+    margin: 22px 0; color: var(--dim);
   }
   footer {
-    margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border);
-    color: var(--muted); font-size: 0.9rem;
-  }
-  code {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 4px; padding: 1px 5px; font-size: 0.9em;
+    margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border-dim);
+    color: var(--faint); font-size: .9rem;
   }
 </style>
 </head>
