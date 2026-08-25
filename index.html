@@ -109,6 +109,16 @@
   .app-card { border: 1px solid var(--border); border-radius: 10px; padding: 24px; background: var(--surface); }
   .app-card h3 { margin: 0 0 6px; font-size: 1.05rem; }
   .app-card p { margin: 0 0 18px; color: var(--muted); font-size: .93rem; }
+  .passi { list-style: none; padding: 0; margin: 0 0 16px; counter-reset: passo; }
+  .passi li { counter-increment: passo; position: relative; padding-left: 30px; margin-bottom: 10px; font-size: .95rem; }
+  .passi li::before {
+    content: counter(passo); position: absolute; left: 0; top: 1px;
+    width: 20px; height: 20px; border-radius: 50%; background: var(--accent-soft);
+    color: var(--accent-text); font-size: .78rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .alt { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .alt-link { font-size: .93rem; }
   .btn-off { display: inline-block; padding: 12px 22px; border-radius: 8px; border: 1px solid var(--border);
              color: var(--muted); font-weight: 600; font-size: .95rem; cursor: default; }
   .cta { text-align: center; padding: 76px 0; }
@@ -215,13 +225,19 @@
 
   <section class="wrap" id="app">
     <h2>Provala come app</h2>
-    <p>L'app fa una cosa che il bot non può fare: ti manda una notifica alla stessa ora ogni giorno, e tiene il conto della tua serie. È una versione di prova, non ancora sugli store.</p>
+    <p>L'app fa una cosa che il bot non può fare: ti manda una notifica alla stessa ora ogni giorno, e tiene il conto della tua serie. È una versione di prova: su iPhone tramite TestFlight, su Android tramite il Play Store.</p>
     <div class="app-grid">
       <div class="app-card">
         <h3>Android</h3>
-        <p>Scarichi e installi, senza account e senza store.</p>
-        <a class="btn" href="https://expo.dev/artifacts/eas/2LB84t3yTA10HAcSytOGUS1VpZtrwQmh9cwzVlIz9I8.apk">Scarica l'app</a>
-        <span class="btn-note">Android avviserà che non viene dal Play Store: tocca <strong>Installa comunque</strong>, è previsto.</span>
+        <p>Dal Play Store, con gli aggiornamenti automatici. Sono due passaggi perché Google fa passare le versioni di prova da una lista di tester.</p>
+        <ol class="passi">
+          <li><a href="https://groups.google.com/g/relay-beta/about">Iscriviti al gruppo</a> — non è una mailing list, non riceverai messaggi.</li>
+          <li><a href="https://play.google.com/apps/testing/app.relay.staffetta">Diventa tester</a>, poi installa dal Play Store.</li>
+        </ol>
+        <span class="btn-note">Se dopo l'iscrizione vedi ancora «non disponibile», aspetta qualche ora: Google impiega un po' a registrarla.</span>
+        <div class="alt">
+          <span class="alt-link">Preferisci senza account Google? <a href="https://expo.dev/artifacts/eas/2LB84t3yTA10HAcSytOGUS1VpZtrwQmh9cwzVlIz9I8.apk">Scarica il file direttamente</a> — Android avviserà che non viene dallo store, e gli aggiornamenti non arriveranno da soli.</span>
+        </div>
       </div>
       <div class="app-card">
         <h3>iPhone</h3>
